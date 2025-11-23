@@ -20,9 +20,28 @@
 }
 
 body {
-  background: var(--background);
+   background: radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.08), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.08), transparent 28%),
+    radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.08), transparent 25%),
+    #020617;
+
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #ec4899, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-surface {
+  backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px -35px rgba(0, 0, 0, 0.65);
 }
 
 @tailwind base;
