@@ -2,6 +2,8 @@
 import { AuthContext } from "./Auth/Authprovider";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
+import BannerSlider from "./Banner/BannerSlider";
+import Cards from "./HomeCard/Cards";
 
 export default function Home() {
   const { user, setUser, handlegooglesignin } = useContext(AuthContext);
@@ -37,5 +39,15 @@ export default function Home() {
 
   
   console.log(animeData);
-  return <h1 onClick={handlesignin}>Welcome to Next Anime Provider</h1>;
+  return <>
+  <h1 onClick={handlesignin}>Welcome to Next Anime Provider</h1>
+  <BannerSlider />
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 justify-items-center bg-gray-800 max-w-[1200px] mx-auto">
+     {
+    animeData.map((anime, index) => ( <Cards key={anime?._id || anime?.id || index} anime={anime} />))
+  }
+  </div>
+ 
+  </>;
+  
 }

@@ -5,8 +5,8 @@ import { AuthContext } from "../Auth/Authprovider";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
-  console.log("Navbar User:", user);
+ const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const link = (
     <>
@@ -26,22 +26,7 @@ const Navbar = () => {
           View Anime
         </Link>
       </li>
-      <li>
-        <Link
-          href="/shop"
-          className="text-white hover:text-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-110 hover:underline"
-        >
-          ADD ANIME
-        </Link>
-      </li>
-      <li>
-        <Link
-          href="/contact"
-          className="text-white hover:text-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-110 hover:underline"
-        >
-          MANAGE ANIME
-        </Link>
-      </li>
+     
     </>
   );
 
@@ -55,60 +40,51 @@ const Navbar = () => {
       {/* Desktop Navbar Links */}
       <ul className="hidden sm:flex space-x-8 text-xl font-bold tracking-wide">
         {link}
-        {/* Dropdown for Logged-in User */}
-        <li className="relative hidden sm:block">
-          <div className="absolute right-0 hidden bg-gray-800 text-white p-2 mt-2 rounded-lg shadow-lg group-hover:block">
-            <p className="px-4 py-2">Logged-in User</p>
-            <Link
-              href="/add-product"
-              className="block px-4 py-2 hover:bg-gray-600"
-            >
-              Add Product
-            </Link>
-            <Link
-              href="/manage-products"
-              className="block px-4 py-2 hover:bg-gray-600"
-            >
-              Manage Products
-            </Link>
-          </div>
-        </li>
+       
       </ul>
 
       {/* Desktop Login Button */}
       {user ? (
-        <div className="relative">
-          {/* User Info Dropdown */}
-          <button className="bg-purple-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-purple-400 transition-all duration-300 ease-in-out">
-            {user.displayName} {/* Assuming user object has a 'name' field */}
+        <div className="relative" onMouseLeave={() => setIsDropdownOpen(false)}>
+          <button
+            className="bg-purple-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-purple-400 transition-all duration-300 ease-in-out"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            {user.displayName || "Logged-in User"}
           </button>
 
-          {/* Dropdown Menu */}
-          <div className="absolute right-0 mt-2 bg-gray-800 text-white p-4 rounded-lg shadow-lg hidden group-hover:block">
-            <p className="px-4 py-2">{user.email}</p>{" "}
-            {/* Display user's name */}
-            <Link
-              href="/add-product"
-              className="block px-4 py-2 hover:bg-gray-600"
-            >
-              Add Product
-            </Link>
-            <Link
-              href="/manage-products"
-              className="block px-4 py-2 hover:bg-gray-600"
-            >
-              Manage Products
-            </Link>
-          </div>
+            {isDropdownOpen && (
+            <div className="absolute right-0 mt-2 w-56 bg-gray-800 text-white p-4 rounded-lg shadow-lg">
+              <p className="px-4 py-2 text-sm text-gray-300">{user.email}</p>
+              <Link
+                href="/add-product"
+                className="block px-4 py-2 hover:bg-gray-700 rounded-md"
+              >
+                Add Product
+              </Link>
+              <Link
+                href="/manage-products"
+                className="block px-4 py-2 hover:bg-gray-700 rounded-md"
+              >
+                Manage Products
+              </Link>
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex space-x-4">
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-blue-400 transition-all duration-300 ease-in-out">
+          <Link
+            href="/login"
+            className="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-blue-400 transition-all duration-300 ease-in-out"
+          >
             Login
-          </button>
-          <button className="bg-green-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-green-400 transition-all duration-300 ease-in-out">
+           </Link>
+          <Link
+            href="/register"
+            className="bg-green-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-green-400 transition-all duration-300 ease-in-out"
+          >
             Register
-          </button>
+                </Link>
         </div>
       )}
 
@@ -140,6 +116,40 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="sm:hidden absolute top-16 left-0 right-0 bg-gradient-to-r from-gray-800 via-purple-700 to-indigo-800 p-6 flex flex-col space-y-4 mt-4">
           {link}
+                  <div className="border-t border-purple-500 pt-4 space-y-3">
+            {user ? (
+              <>
+                <p className="text-white text-sm">{user.email}</p>
+                <Link
+                  href="/add-product"
+                  className="text-white hover:text-yellow-400 transition-all duration-300 ease-in-out"
+                >
+                  Add Product
+                </Link>
+                <Link
+                  href="/manage-products"
+                  className="text-white hover:text-yellow-400 transition-all duration-300 ease-in-out"
+                >
+                  Manage Products
+                </Link>
+              </>
+            ) : (
+              <div className="flex space-x-4">
+                <Link
+                  href="/login"
+                  className="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-blue-400 transition-all duration-300 ease-in-out"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="bg-green-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-green-400 transition-all duration-300 ease-in-out"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </nav>
