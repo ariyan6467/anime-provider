@@ -15,17 +15,7 @@ const Cards = ({ anime }) => {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
-        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white ring-1 ring-white/20">
-          {anime.genre}
-
-
-
-
-
-
-
-        </div>
+        
 
  <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-amber-300 backdrop-blur ring-1 ring-amber-300/30">
           <span className="h-2 w-2 rounded-full bg-amber-300" />
@@ -50,19 +40,7 @@ const Cards = ({ anime }) => {
             <span className="text-xs uppercase tracking-[0.3em] text-slate-400">Starting at</span>
             <span className="text-xl font-bold text-white">{anime.price}</span>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-lg shadow-fuchsia-900/30 transition duration-300 group-hover:scale-[1.03]">
-            Preview
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              className="h-4 w-4"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
-            </svg>
-          </div>
+      
         </div>
       </div>
     </div>

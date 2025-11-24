@@ -66,7 +66,7 @@ const Form = () => {
           </button>
         </div>
         <p className="signup">
-          Don't have an account?
+          Don&apos;t have an account?
           <a rel="noopener noreferrer" href="#" className>
             Sign up
           </a>

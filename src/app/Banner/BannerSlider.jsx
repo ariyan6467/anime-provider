@@ -66,20 +66,7 @@ export default function HeroSection() {
               Watch teaser
             </a>
           </div>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <span className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 ring-1 ring-white/10">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
-              Real-time availability
-            </span>
-            <span className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 ring-1 ring-white/10">
-              <span className="h-2 w-2 rounded-full bg-fuchsia-400" />
-              Curated editor picks
-            </span>
-            <span className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 ring-1 ring-white/10">
-              <span className="h-2 w-2 rounded-full bg-cyan-400" />
-              Adaptive themes
-            </span>
-          </div>
+         
         </div>
 
         <div

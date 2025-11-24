@@ -105,10 +105,10 @@ const Navbar = () => {
           {user ? (
             <div
               className="relative"
-              onMouseLeave={() => setIsDropdownOpen(false)}
+           
             >
               <button
-                className="rounded-xl bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-lg shadow-fuchsia-900/30 transition duration-300 hover:scale-105"
+                className="rounded-xl bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-lg shadow-fuchsia-900/30 transition duration-900 hover:scale-105"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {user.displayName || "Logged-in User"}
@@ -121,6 +121,7 @@ const Navbar = () => {
                   </div>
                   <div className="p-3 space-y-1 text-sm">
                     <Link
+                    onClick={() => setIsDropdownOpen(false)}
                       href="/Add-Product"
                       className="flex items-center gap-2 rounded-lg px-3 py-2 text-slate-200 transition hover:bg-white/5"
                     >
@@ -128,7 +129,8 @@ const Navbar = () => {
                       Add Product
                     </Link>
                     <Link
-                      href="/manage-products"
+                    onClick={() => setIsDropdownOpen(false)}
+                      href="/Manage-products"
                       className="flex items-center gap-2 rounded-lg px-3 py-2 text-slate-200 transition hover:bg-white/5"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />

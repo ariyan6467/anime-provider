@@ -7,6 +7,7 @@ const googleProvider = new GoogleAuthProvider();
 const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const[details,setdetails]=useState([]);
   function handlegooglesignin() {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -22,7 +23,9 @@ const Authprovider = ({ children }) => {
   }, []);
   const authInfo = { user, loading, 
     setUser, setLoading, 
-    handlegooglesignin };
+    handlegooglesignin,
+  details,setdetails
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
