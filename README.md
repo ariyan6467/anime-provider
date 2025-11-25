@@ -34,6 +34,24 @@ A Next.js app for exploring anime releases and managing a small catalog. Users c
 | `/Add-Product` | Protected form for creating a new anime entry, posting data to the backend service. | Yes |
 | `/Manage-products` | Protected dashboard that lists every anime item with management actions. | Yes |
 
+## Route Structure
+```text
+app
+├── layout.js                 -> Application shell for all routes
+├── page.js                   -> /
+├── Login
+│   └── page.jsx              -> /Login
+├── About
+│   ├── page.jsx              -> /About
+│   └── [anime]
+│       └── page.jsx          -> /About/[anime]
+├── Add-Product
+│   └── page.jsx              -> /Add-Product
+└── Manage-products
+    └── page.jsx              -> /Manage-products
+```
+
+
 ## Layouts & Components
 - Layouts
   - `src/app/layout.js`
