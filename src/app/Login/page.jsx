@@ -80,7 +80,7 @@ const StyledWrapper = styled.div`
   .form-container {
     width: 320px;
     border-radius: 0.75rem;
-    background-color: rgba(17, 24, 39, 1);
+    background-color: transparent;
     padding: 2rem;
     color: rgba(243, 244, 246, 1);
   }

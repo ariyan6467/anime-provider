@@ -1,34 +1,50 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
+import ProtectedRoute from "../Component/ProtectedRoute";
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
 
 const Form = () => {
     async function handlesubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const url = form.url.value;
+    const image = form.url.value;
     const title = form.title.value;
     const short_description = form.short_description.value;
     const long_description = form.long_description.value;
     const price = form.price.value;
-    console.log(url, title, short_description, long_description, price);
+    console.log(image, title, short_description, long_description, price);
     const product = {
-      url,
+     image,
       title,
       short_description,
       long_description,
       price,
     }
     
-      const res = await fetch("http://localhost:5000/addanime", {
+      const res = await fetch("https://next-anime-server.vercel.app/addanime", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+      
       },
+     
       body: JSON.stringify(  product ),
-    });
+       
+     
+    } );
     
     const result = await res.json();
+    Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500,
+  
+});
+ router.push('/Manage-products');
   
 
 
@@ -36,7 +52,8 @@ const Form = () => {
 }
 
   return (
-    <StyledWrapper>
+   <ProtectedRoute>
+     <StyledWrapper>
       <div className="glitch-form-wrapper h-screen">
         <form 
         onSubmit={handlesubmit}
@@ -145,6 +162,7 @@ const Form = () => {
         </form>
       </div>
     </StyledWrapper>
+   </ProtectedRoute>
   );
 };
 

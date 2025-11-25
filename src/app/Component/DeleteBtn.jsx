@@ -18,7 +18,7 @@ function handleDelete(id) {
     if (result.isConfirmed) {
       // First Swal confirmation closes here, and we proceed with the delete request
 
-      fetch(`http://localhost:5000/${id}`, {
+      fetch(`https://next-anime-server.vercel.app/${id}`, {
         method: 'DELETE',
       })
         .then((response) => response.json())
@@ -32,7 +32,7 @@ function handleDelete(id) {
             icon: "success"
           });
           
-          alert('Item deleted successfully'); // You can also remove this if you prefer Swal only
+         
         })
         .catch((error) => {
           console.error('Error deleting item:', error);
